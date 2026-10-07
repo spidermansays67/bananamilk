@@ -1,0 +1,29 @@
+package st_71;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class prac33_71 {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver","D:\\\\tycs_71\\\\chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.navigate().to("https://www.facebook.com/");
+		
+		driver.manage().window().maximize();
+		
+		WebElement elementEmail = driver.findElement(By.name("email"));
+		elementEmail.sendKeys("student.unity@proton.me");
+		WebElement elementPassword = driver.findElement(By.name("pass"));
+		elementPassword.sendKeys("Unity@1234");
+		WebElement elementSubmit = driver.findElement(By.name("login"));
+		elementSubmit.submit();
+
+
+	}
+
+}

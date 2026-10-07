@@ -1,0 +1,31 @@
+==================   31  =======================
+
+
+package st_71;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Prac3_71 {
+	public static WebDriver driver;
+	
+
+	public static void main(String[] args) {
+
+		System.out.println("Launching Chorme.....");
+		
+		System.setProperty("webdriver.chrome.driver","D:\\tycs_71\\chromedriver.exe");
+		
+		driver = new ChromeDriver();
+		driver.navigate().to("http://amazon.in");
+
+	}
+
+}
+
+
+
+
+
+
+

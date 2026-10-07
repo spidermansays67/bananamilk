@@ -1,0 +1,56 @@
+package st_71;
+
+import jxl.*;
+import jxl.write.*;
+import java.io.*;
+import org.testng.annotations.Test;
+
+public class prac6_71 {
+
+    @Test
+    public void testImportExport() throws Exception {
+
+
+        FileInputStream fi = new FileInputStream("D:\\New folder5\\Book61.xls");
+        Workbook workbook = Workbook.getWorkbook(fi);
+        Sheet sheet = workbook.getSheet(0);
+
+
+        FileOutputStream fo = new FileOutputStream("D:\\New folder5\\Book61Result.xls");
+        WritableWorkbook writableWorkbook = Workbook.createWorkbook(fo);
+        WritableSheet writableSheet = writableWorkbook.createSheet("Result", 0);
+
+        int skippedRows = 0;
+
+
+        for (int i = 0; i < sheet.getRows(); i++) {
+
+
+            if (i > 0) {
+                String marks = sheet.getCell(3, i).getContents();
+                int m = Integer.parseInt(marks);
+
+                if (m < 60) {
+                    skippedRows++;
+                    continue;
+                }
+            }
+
+
+            for (int j = 0; j < sheet.getColumns(); j++) {
+                String data = sheet.getCell(j, i).getContents();
+                Label label = new Label(j, i - skippedRows, data);
+                writableSheet.addCell(label);
+            }
+        }
+
+
+        writableWorkbook.write();
+        writableWorkbook.close();
+        workbook.close();
+        fi.close();
+        fo.close();
+
+        System.out.println("Filtered Excel file created successfully.");
+    }
+}

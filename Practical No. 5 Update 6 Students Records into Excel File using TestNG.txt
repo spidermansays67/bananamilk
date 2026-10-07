@@ -1,0 +1,239 @@
+ 
+ 
+
+import jxl.*;
+import jxl.write.*;
+
+import org.testng.annotations.*;
+import java.io.*;
+public class Pract5 {
+	@BeforeClass
+	public void f1() {}
+	@Test
+	public void testImportExport() throws Exception{
+		FileInputStream fi = new FileInputStream("D:\\New folder5\\ED1.xls");
+		Workbook w = Workbook.getWorkbook(fi);
+		Sheet s = w.getSheet(0);
+		String a[][]=new String[s.getRows()][s.getColumns()];
+		FileOutputStream fo = new FileOutputStream("D:\\New folder5\\ResultED1.xls");
+		WritableWorkbook wwb = Workbook.createWorkbook(fo);
+		WritableSheet ws = wwb.createSheet("result", 0);
+		for(int i=0; i<s.getRows();i++)
+			for(int j=0; j<s.getColumns();j++) {
+				a[i][j]=s.getCell(j,i).getContents();
+				Label l2 = new Label(j,i,a[i][j]);
+				ws.addCell(l2);
+				Label l1 = new Label(6,0,"Result");
+				ws.addCell(l1);
+			}
+		for(int i=1;i<s.getRows();i++) {
+			for(int j=2;j<s.getColumns();j++) {
+				a[i][j]=s.getCell(j,i).getContents();
+				int x = Integer.parseInt(a[i][j]);
+				if(x>35) {
+					Label l1 = new Label(6,i,"PASS");
+					ws.addCell(l1);
+				}
+				else {
+					Label l1 = new Label(6,i,"FAIL");
+					ws.addCell(l1);
+					break;
+				}
+			}
+		}
+		wwb.write();
+		wwb.close();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+=========================================   EVENODD  =====================================================
+
+
+
+
+package stqa_71;
+
+import jxl.*;
+import jxl.write.*;
+import org.testng.annotations.*;
+import java.io.*;
+
+public class EvenOdd_71 {
+
+    @BeforeClass
+    public void f1() {
+        // Initialization if needed
+    }
+
+    @Test
+    public void testImportExport() throws Exception {
+
+        String inputPath =
+                "C:\\Users\\Ruchit\\OneDrive\\Documents\\ruchit\\ST_71\\EvenOdd.xls";
+
+        String outputPath =
+                "C:\\Users\\Ruchit\\OneDrive\\Documents\\ruchit\\ST_71\\EvenOdd_Result.xls";
+
+        
+        FileInputStream fi = new FileInputStream(inputPath);
+
+        
+        Workbook w = Workbook.getWorkbook(fi);
+
+        Sheet s = w.getSheet(0);
+
+        
+        FileOutputStream fo = new FileOutputStream(outputPath);
+
+        WritableWorkbook wwb = Workbook.createWorkbook(fo);
+
+        WritableSheet ws = wwb.createSheet("result", 0);
+
+        int rows = s.getRows();
+        int cols = s.getColumns();
+
+        
+        for (int i = 0; i < rows; i++) {
+
+            for (int j = 0; j < cols; j++) {
+
+                String content = s.getCell(j, i).getContents();
+
+                ws.addCell(new Label(j, i, content));
+            }
+        }
+
+        
+        int resultCol = cols;
+
+        ws.addCell(new Label(resultCol, 0, "Result"));
+
+        
+        for (int i = 1; i < rows; i++) {
+
+            String value = s.getCell(0, i).getContents().trim();
+
+            if (!value.isEmpty()) {
+
+                try {
+
+                    int x = Integer.parseInt(value);
+
+                    String parity = (x % 2 == 0) ? "Even" : "Odd";
+
+                    ws.addCell(new Label(resultCol, i, parity));
+
+                } catch (NumberFormatException e) {
+
+                    ws.addCell(
+                            new Label(resultCol, i, "Invalid Number")
+                    );
+                }
+            }
+        }
+
+        
+        wwb.write();
+        wwb.close();
+
+        fo.close();
+
+        
+        w.close();
+        fi.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+C:\\Users\\Ruchit\\OneDrive\\Documents\\ruchit\\ST_71\\EvenOdd.xls
+
+
+
+
+
+
+
+ 
+
+import jxl.*;
+import jxl.write.*;
+
+import org.testng.annotations.*;
+import java.io.*;
+public class prac53 {
+	@BeforeClass
+	public void f1() {}
+	@Test
+	public void testImportExport() throws Exception{
+		FileInputStream fi = new FileInputStream("D:\\New folder5\\ED1.xls");
+		Workbook w = Workbook.getWorkbook(fi);
+		Sheet s = w.getSheet(0);
+		String a[][]=new String[s.getRows()][s.getColumns()];
+		FileOutputStream fo = new FileOutputStream("D:\\New folder5\\ResultED1.xls");
+		WritableWorkbook wwb = Workbook.createWorkbook(fo);
+		WritableSheet ws = wwb.createSheet("result", 0);
+		String fact = 1;
+		
+		for(int i=0; i<s.getRows();i++)
+			for(int j=0; j<s.getColumns();j++) {
+				a[i][j]=s.getCell(j,i).getContents();
+				Label l2 = new Label(j,i,a[i][j]);
+				ws.addCell(l2);
+				Label l1 = new Label(1,0,"Result");
+				ws.addCell(l1);
+			}
+		for(int i=1;i<s.getRows();i++) {
+			for(int j=0;j<s.getColumns();j++) {
+				a[i][j]=s.getCell(j,i).getContents();
+				int x = Integer.parseInt(a[i][j]);
+				for (int k = 1; k<=x; k++)
+					fact = fact * k;
+					Label l1 = new Label(1,i,fact);
+					ws.addCell(l1);
+					
+				}
+			}
+		}
+		wwb.write();
+		wwb.close();
+	}
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,224 @@
+============  calculator  =======================
+
+package st_71;
+
+public class calculator1 {
+	public int add(int a, int b) {
+        return a + b;
+    }
+     
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+
+
+
+
+
+package st_71;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class CT {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testAdd() {
+		calculator1 calculator = new calculator1();
+	    int a = 1234;
+	    int b = 5678;
+	    int actual = calculator.add(a, b);
+	 
+	    int expected = 6912;
+	 
+	    assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testSubtract() {
+		calculator1 calculator = new calculator1();
+	    int a = 1234;
+	    int b = 5678;
+	    int actual = calculator.subtract(b, a);
+	 
+	    int expected = 4444;
+	 
+	    assertEquals(expected, actual);
+	}
+
+}
+
+
+================  Ciecle  ===========================
+
+package st_71;
+
+public class Circle_new {
+
+
+public double area(double radius) {
+    return Math.PI * radius * radius;
+}
+
+
+public double circumference(double radius) {
+    return 2 * Math.PI * radius;
+}
+}
+
+
+
+
+package st_71;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class CAF {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	 @Test
+	    public void testArea() {
+	        Circle_new calculator = new Circle_new();
+
+	        double radius = 7;
+	        double actual = calculator.area(radius);
+	        double expected = Math.PI * 7 * 7;
+
+	        assertEquals(expected, actual, 0.0001);
+	    }
+		
+		
+
+	@Test
+	public void testCircumference() {
+
+	        Circle_new calculator = new Circle_new();
+
+	        double radius = 7;
+	        double actual = calculator.circumference(radius);
+	        double expected = 2 * Math.PI * 7;
+
+	        assertEquals(expected, actual, 0.0001);
+	    }
+		
+		
+	}
+
+
+
+
+=========================  FACT  ========================
+
+
+
+package st_71;
+
+public class Fact_new {
+	public int factorial(int n) {
+        int fact = 1;
+
+        for (int i = 1; i <= n; i++) {
+            fact = fact * i;
+        }
+
+        return fact;
+    }
+}
+
+
+
+
+
+
+
+package st_71;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class FAC_new {
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testFactorial() {
+		 Fact_new calculator = new Fact_new();
+
+	        int number = 5;
+	        int actual = calculator.factorial(number);
+
+	        int expected = 120;
+
+	        assertEquals(expected, actual);
+	    }
+	}
+
+\
+
+
+    
+    
+
+
